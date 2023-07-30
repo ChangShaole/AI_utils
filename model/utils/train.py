@@ -36,9 +36,9 @@ df_test = pd.read_csv(test_file)
 with open(input_feature_file, 'r') as file:
     input_features_list = json.load(file)
 
-train_X = pd.DataFrame(df_train, columns=[column for column in df_train.columns if column in input_features_list]).values
+train_X = pd.DataFrame(df_train, columns=[column for column in df_train.columns if column in input_features_list]).values.astype(float)
 train_y = df_train[target_column].values
-test_X = pd.DataFrame(df_test, columns=[column for column in df_train.columns if column in input_features_list]).values
+test_X = pd.DataFrame(df_test, columns=[column for column in df_train.columns if column in input_features_list]).values.astype(float)
 test_y = df_test[target_column].values
 
 print('train feature shape: {}\ntrain target shape: {}'.format(train_X.shape, train_y.shape))

@@ -36,7 +36,7 @@ with open(args.input_feature_file, 'r') as f:
 input_feature_list = json.loads(json_list)
 
 test_input_df = pd.DataFrame(test_df, columns=[header for header in test_df.columns if header in input_feature_list])
-np_test_X = test_input_df.values
+np_test_X = test_input_df.values.astype(float)
 
 model = pickle.load(open(args.weights, "rb"))
 
